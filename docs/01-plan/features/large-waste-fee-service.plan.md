@@ -1,6 +1,7 @@
 # Plan: 대형폐기물 수수료 조회 웹 서비스
 
 > 작성일: 2026-02-20
+> 최종 수정일: 2026-02-21
 > 프로젝트명: Thowit (대형폐기물 배출 도우미)
 > 참고 프로젝트: C:\Users\csj20\Desktop\throw_it
 
@@ -80,15 +81,17 @@
 
 ### Phase 1: 기획 (담당: 강해원, 이재훈)
 
-#### 1-1. 서비스 기획서 작성
-- [ ] 프로젝트 목표 및 범위 정의
-- [ ] 타겟 사용자 분석 (일반 시민, 이사/청소업체)
-- [ ] 핵심 기능 명세서 작성
-- [ ] 사용자 흐름(User Flow) 정의
+#### 1-1. 서비스 기획서 작성 ✅ (2026-02-21 완료)
+- [x] 프로젝트 목표 및 범위 정의
+- [x] 타겟 사용자 분석 (일반 시민, 이사/청소업체, 재활용 관심 사용자)
+- [x] 핵심 기능 명세서 작성 (F1~F6, 입력/출력/처리로직/예외처리 포함)
+- [x] 사용자 흐름(User Flow) 정의 (5개 흐름)
   - 수수료 조회 흐름: 홈 → 시도 선택 → 시군구 선택 → 카테고리/검색 → 품목 선택 → 수수료 확인
   - 온라인 배출 신청 흐름: 홈 → 신청 안내 → 정보 입력 → 검토 → 결제 → 완료
   - 재활용 역경매 흐름: 홈 → 목록 → 등록/상세 → 상태 관리
   - 오프라인 안내 흐름: 홈 → 카테고리 선택 → 지역 선택 → 목록/지도 확인
+  - 인증 흐름: 로그인/회원가입 → localStorage 저장 → 세션 유지
+- **산출물**: `docs/01-plan/phase1-1-service-planning.md`
 
 #### 1-2. 와이어프레임 작성
 - [ ] 전체 17개 페이지 와이어프레임 설계
@@ -174,23 +177,23 @@
 - [ ] `waste_facility`: 시설명, 업종명, 소재지도로명주소
 - [ ] `recycle_items`: 시도명, 시군구명, status
 
-#### 3-3. 데이터 준비
-- [ ] schema.sql 작성 (테이블 생성 DDL)
-- [ ] large_waste_fee_data.sql 준비 (공공데이터 22,819건)
-- [ ] waste_facility_data.sql 준비 (공공데이터 9,113건)
-- [ ] 문자셋 설정: UTF-8 MB4 (utf8mb4_0900_ai_ci)
+#### 3-3. 데이터 준비 (일부 완료)
+- [x] schema.sql 작성 (테이블 생성 DDL) ✅ → `backend/src/main/resources/sql/schema.sql`
+- [ ] large_waste_fee_data.sql 준비 (공공데이터 22,819건) — 참고 프로젝트에서 복사 필요
+- [ ] waste_facility_data.sql 준비 (공공데이터 9,113건) — 참고 프로젝트에서 복사 필요
+- [x] 문자셋 설정: UTF-8 MB4 (utf8mb4_0900_ai_ci) ✅
 
 ---
 
 ### Phase 4: Backend 개발 (담당: 최세진, 이재훈)
 
-#### 4-1. 프로젝트 초기 설정
-- [ ] Spring Boot 프로젝트 생성 (start.spring.io)
-- [ ] build.gradle.kts 의존성 설정
+#### 4-1. 프로젝트 초기 설정 ✅ (2026-02-20 완료)
+- [x] Spring Boot 프로젝트 생성 → `ThowItApplication.java`
+- [x] build.gradle.kts 의존성 설정 ✅
   - Spring Web, Spring Data JPA, MySQL Connector, Lombok, Validation
-- [ ] application.yml 설정 (포트 8080, DB 연결, JPA 설정)
-- [ ] CORS 설정 (localhost:5173, 5174, 3000 허용)
-- [ ] 글로벌 예외 처리기 구현 (BusinessException, ValidationException)
+- [x] application.yml 설정 (포트 8080, DB 연결, JPA 설정) ✅
+- [x] CORS 설정 (localhost:5173, 5174, 3000 허용) ✅ → `CorsConfig.java`
+- [x] 글로벌 예외 처리기 구현 ✅ → `BusinessException.java`, `ErrorResponse.java`, `GlobalExceptionHandler.java`
 
 #### 4-2. 도메인별 API 개발
 
@@ -259,14 +262,14 @@
 
 ### Phase 5: Frontend 개발 (담당: 최가을, 최은아)
 
-#### 5-1. 프로젝트 초기 설정
-- [ ] Vite + React + TypeScript 프로젝트 생성
-- [ ] 의존성 설치
+#### 5-1. 프로젝트 초기 설정 ✅ (2026-02-20 완료)
+- [x] Vite + React + TypeScript 프로젝트 생성 ✅ → `package.json`
+- [x] 의존성 정의 ✅ (npm install 필요)
   - react-router-dom, zustand, @tanstack/react-query
   - react-hook-form, tailwindcss, eslint
-- [ ] 경로 별칭 설정 (`@` → `./src`)
-- [ ] Tailwind CSS 설정
-- [ ] ESLint 설정
+- [x] 경로 별칭 설정 (`@` → `./src`) ✅ → `vite.config.ts`, `tsconfig.app.json`
+- [x] Tailwind CSS 설정 ✅ → `index.css` (디자인 시스템 테마 포함)
+- [x] ESLint 설정 ✅ → `eslint.config.js`
 
 #### 5-2. 공통 컴포넌트 개발 (최은아)
 - [ ] Layout 컴포넌트: Header, BottomNav, MobileContainer, ProgressBar
@@ -461,48 +464,49 @@
 ## 8. 작업 순서 (진행 로드맵)
 
 ```
-[Step 1] 기획 단계
-  ├── 서비스 기획서 작성 (강해원, 이재훈)
-  ├── 사용자 흐름 정의 (강해원, 이재훈)
-  └── 와이어프레임 작성 (강해원, 이재훈)
+[Step 1] 기획 단계                          ← 🔄 진행 중
+  ├── ✅ 서비스 기획서 작성 (2026-02-21 완료)
+  ├── ⬜ 사용자 흐름 정의 (강해원, 이재훈)    ← 다음 작업
+  └── ⬜ 와이어프레임 작성 (강해원, 이재훈)
          │
-[Step 2] 설계 단계 (기획 완료 후)
-  ├── 디자인 시스템 정의 (강해원, 최은아)
-  ├── UI/페이지 디자인 (강해원, 최은아)
-  └── DB 설계 및 ERD 작성 (최세진, 이재훈)
+[Step 2] 설계 단계 (기획 완료 후)             ← ⏳ 대기
+  ├── ⬜ 디자인 시스템 정의 (강해원, 최은아)
+  ├── ⬜ UI/페이지 디자인 (강해원, 최은아)
+  └── ⬜ DB 설계 및 ERD 작성 (최세진, 이재훈)
          │
-[Step 3] 환경 구축 (설계 완료 후)
-  ├── Backend 프로젝트 생성 및 설정 (최세진)
-  ├── Frontend 프로젝트 생성 및 설정 (최가을)
-  ├── MySQL DB 생성 및 스키마 적용 (최세진)
-  └── 공공데이터 SQL Import (최세진)
+[Step 3] 환경 구축                          ← ✅ 완료
+  ├── ✅ Backend 프로젝트 생성 및 설정 (최세진) — 2026-02-20
+  ├── ✅ Frontend 프로젝트 생성 및 설정 (최가을) — 2026-02-20
+  ├── ✅ schema.sql 작성 완료 — 2026-02-20
+  ├── ⬜ MySQL DB 생성 및 스키마 적용 (최세진)
+  └── ⬜ 공공데이터 SQL Import (최세진)
          │
-[Step 4] 핵심 개발 (병렬 진행)
-  ├── Backend API 개발 (최세진: User+Disposal / 이재훈: Fee+Recycle+Offline)
-  ├── Frontend 공통 컴포넌트 (최은아)
-  ├── Frontend API 서비스 레이어 (최가을)
-  └── Frontend 상태 관리 + 타입 정의 (최가을)
+[Step 4] 핵심 개발 (병렬 진행)                ← ⏳ 대기
+  ├── ⬜ Backend API 개발 (최세진: User+Disposal / 이재훈: Fee+Recycle+Offline)
+  ├── ⬜ Frontend 공통 컴포넌트 (최은아)
+  ├── ⬜ Frontend API 서비스 레이어 (최가을)
+  └── ⬜ Frontend 상태 관리 + 타입 정의 (최가을)
          │
 [Step 5] 페이지 개발 (Backend API + 공통 컴포넌트 완료 후)
-  ├── 최가을: 홈, 수수료 조회, 배출 신청 플로우 (9페이지)
-  └── 최은아: 인증, 오프라인 안내, 재활용 (8페이지)
+  ├── ⬜ 최가을: 홈, 수수료 조회, 배출 신청 플로우 (9페이지)
+  └── ⬜ 최은아: 인증, 오프라인 안내, 재활용 (8페이지)
          │
 [Step 6] 연동 및 통합 (전원)
-  ├── Frontend-Backend API 연동
-  ├── 전체 플로우 테스트
-  └── 버그 수정
+  ├── ⬜ Frontend-Backend API 연동
+  ├── ⬜ 전체 플로우 테스트
+  └── ⬜ 버그 수정
          │
 [Step 7] QA 및 테스트 (전원)
-  ├── 기능 테스트
-  ├── UI/UX 검수
-  ├── 성능 테스트
-  └── 보안 점검
+  ├── ⬜ 기능 테스트
+  ├── ⬜ UI/UX 검수
+  ├── ⬜ 성능 테스트
+  └── ⬜ 보안 점검
          │
 [Step 8] 배포 (최세진)
-  ├── Frontend 배포
-  ├── Backend 배포
-  ├── DB 이관
-  └── 최종 운영 테스트
+  ├── ⬜ Frontend 배포
+  ├── ⬜ Backend 배포
+  ├── ⬜ DB 이관
+  └── ⬜ 최종 운영 테스트
 ```
 
 ---
@@ -526,3 +530,16 @@
 - **패스워드 보안**: SHA-256 + 16byte Salt + Base64 인코딩
 - **공공데이터 활용**: 대형폐기물 수수료 + 폐기물 처리시설 데이터
 - **지도 API**: Kakao Maps SDK (어댑터 패턴으로 Mock 전환 가능)
+
+---
+
+## 11. 관련 문서
+
+| 문서 | 경로 | 설명 |
+|------|------|------|
+| 요구사항 | `rule.md` | 원본 요구사항 |
+| 서비스 기획서 | `docs/01-plan/phase1-1-service-planning.md` | Phase 1-1 산출물 |
+| 실행 가이드 | `docs/02-design/features/large-waste-fee-service.design.md` | 코드 패턴, 단계별 가이드 |
+| 진행 결과 기록 | `docs/05-progress/thowit.progress.md` | Phase별 작업 결과 기록 |
+| 진행 상황 요약 | `PROGRESS.md` | AI 세션별 진행 기록 |
+| 참고 프로젝트 | `C:\Users\csj20\Desktop\throw_it` | 완성된 예시 코드 |
