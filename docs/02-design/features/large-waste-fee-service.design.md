@@ -1709,7 +1709,7 @@ lib/map/
 
 ## Step 9. Frontend 페이지 개발
 
-> 담당: 최가을(9페이지), 최은아(8페이지)
+> 담당: 최가을(6페이지), 최은아(6페이지), 강해원(5페이지)
 
 ### 개발 순서 (권장)
 
@@ -1721,24 +1721,24 @@ lib/map/
 3. `LoginPage.tsx` - 로그인
 4. `SignupPage.tsx` - 회원가입
 
-**3차 (배출 신청 플로우 - 최가을)**
-5. `OnlinePage.tsx` - 배출 안내
-6. `ApplyPage.tsx` - 신청 폼
-7. `ReviewPage.tsx` - 검토
-8. `PaymentPage.tsx` - 결제
-9. `CompletePage.tsx` - 완료
+**3차 (배출 신청 플로우 - 최가을 + 강해원)**
+5. `OnlinePage.tsx` - 배출 안내 (강해원)
+6. `ApplyPage.tsx` - 신청 폼 (최가을)
+7. `ReviewPage.tsx` - 검토 (최가을)
+8. `PaymentPage.tsx` - 결제 (최가을)
+9. `CompletePage.tsx` - 완료 (최가을)
 
-**4차 (오프라인/재활용 - 최은아)**
+**4차 (오프라인 - 최은아)**
 10. `OfflinePage.tsx` - 메뉴
 11. `StickerShopsPage.tsx` - 스티커 판매소
 12. `CentersPage.tsx` - 주민센터
 13. `TransportPage.tsx` - 운반 대행
-14. `RecyclePage.tsx` - 재활용 목록
-15. `RegisterPage.tsx` - 물품 등록
 
-**5차 (마이페이지 - 최가을)**
-16. `MyPage.tsx` - 신청 내역
-17. `ReceiptPage.tsx` - 영수증
+**5차 (마이페이지 + 재활용 - 강해원)**
+14. `MyPage.tsx` - 신청 내역
+15. `ReceiptPage.tsx` - 영수증
+16. `RecyclePage.tsx` - 재활용 목록
+17. `RegisterPage.tsx` - 물품 등록
 
 ### HomePage 예시 코드
 
@@ -1951,8 +1951,9 @@ main                        ← 배포용 (안정)
 │   ├── feature/recycle     ← 이재훈: 재활용
 │   ├── feature/offline     ← 이재훈: 오프라인
 │   ├── feature/ui-common   ← 최은아: 공통 컴포넌트
-│   ├── feature/pages-core  ← 최가을: 핵심 페이지
-│   └── feature/pages-sub   ← 최은아: 서브 페이지
+│   ├── feature/pages-core  ← 최가을: 핵심 페이지 (홈, 수수료, 배출 플로우)
+│   ├── feature/pages-sub   ← 최은아: 인증 + 오프라인 페이지
+│   └── feature/pages-myrecycle ← 강해원: 온라인 안내, 마이페이지, 재활용
 └── hotfix/xxx              ← 긴급 수정
 ```
 

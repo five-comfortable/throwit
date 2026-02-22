@@ -590,21 +590,21 @@ AVAILABLE (등록됨) → RESERVED (예약됨) → SOLD (거래 완료)
 |---|--------|------|:----:|:---------------:|
 | 1 | 홈페이지 | `/` | X | 최가을 |
 | 2 | 수수료 조회 | `/fee-check` | X | 최가을 |
-| 3 | 온라인 배출 안내 | `/online` | O | 최가을 |
+| 3 | 온라인 배출 안내 | `/online` | O | 강해원 |
 | 4 | 배출 신청 | `/online/apply` | O | 최가을 |
 | 5 | 신청 검토 | `/online/review` | O | 최가을 |
 | 6 | 결제 | `/online/payment` | O | 최가을 |
 | 7 | 신청 완료 | `/online/complete` | O | 최가을 |
-| 8 | 마이페이지 | `/mypage` | O | 최가을 |
-| 9 | 영수증 | `/mypage/receipt/:id` | O | 최가을 |
+| 8 | 마이페이지 | `/mypage` | O | 강해원 |
+| 9 | 영수증 | `/mypage/receipt/:id` | O | 강해원 |
 | 10 | 로그인 | `/login` | X | 최은아 |
 | 11 | 회원가입 | `/signup` | X | 최은아 |
 | 12 | 오프라인 메뉴 | `/offline` | X | 최은아 |
 | 13 | 스티커 판매소 | `/offline/sticker-shops` | X | 최은아 |
 | 14 | 주민센터 | `/offline/centers` | X | 최은아 |
 | 15 | 운반 대행 | `/offline/transport` | X | 최은아 |
-| 16 | 재활용 목록 | `/recycle` | O | 최은아 |
-| 17 | 물품 등록 | `/recycle/register` | O | 최은아 |
+| 16 | 재활용 목록 | `/recycle` | O | 강해원 |
+| 17 | 물품 등록 | `/recycle/register` | O | 강해원 |
 
 ---
 
